@@ -29,7 +29,7 @@ export default class Heroes extends Component {
         {
           imageUrl.map((item,index)=> ( <div >
                                           <img src={item.image} className="characters"/>
-                                          <img src= />
+                                          {/* <img src= /> */}
                                         </div>))
         }
       </div>
