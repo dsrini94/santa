@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import {ScrollToTopOnMount, SectionsContainer, Section} from 'react-fullpage';
+import { SectionsContainer, Section} from 'react-fullpage';
 
 import WelcomePage from '../welcomePage/welcomePage.js';
 import Heroes from '../heroes/heroes.js';

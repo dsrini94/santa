@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
-
-import './welcomePage.css'
-
 import SnowStorm from 'react-snowstorm';
 
+import './welcomePage.css'
 
 export default class WelcomePage extends Component {
   render(){
@@ -12,18 +10,18 @@ export default class WelcomePage extends Component {
         <SnowStorm />
 
         <div className="gameName">
-            <img className="santa" src="https://www.online-slot.de/wp-content/uploads/2017/12/secret-santa-small.png" />
+            <img className="santa" alt="" src="http://pngimg.com/uploads/santa_claus/santa_claus_PNG38463.png" />
         </div>
 
         <div className="greetingText">
-          <span>Welcome to Secret </span>
-          <span className="colorRed">Santa</span>
+          <span>Welcome to </span>
+          <span className="colorRed"> Christmas Celebration </span>
         </div>
 
         <div className="infoText">
-          <span className="line1">Scroll down to know your</span>
-          <span className="line2">Secret Child</span>
+          <span className="line1"> Scroll down to play </span>
         </div>
+
       </div>
     );
   }

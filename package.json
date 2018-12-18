@@ -7,7 +7,8 @@
     "react-dom": "^16.6.3",
     "react-fullpage": "^0.1.19",
     "react-scripts": "2.1.1",
-    "react-snowstorm": "0.0.2"
+    "react-snowstorm": "0.0.2",
+    "semantic-ui-react": "^0.84.0"
   },
   "scripts": {
     "start": "react-scripts start",
