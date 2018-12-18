@@ -3,8 +3,6 @@ import React, { Component } from 'react';
 import {ScrollToTopOnMount, SectionsContainer, Section} from 'react-fullpage';
 
 import WelcomePage from '../welcomePage/welcomePage.js';
-import SecondPage from '../secondPage/secondPage.js';
-import TaskPage from '../taskPage/taskPage.js';
 import Heroes from '../heroes/heroes.js';
 
 export default class FullPage extends Component {
@@ -12,7 +10,7 @@ export default class FullPage extends Component {
 
     let options = {
       sectionClassName:     'section',
-      anchors:              ['sectionOne', 'sectionTwo', 'sectionThree'],
+      anchors:              ['sectionOne', 'sectionTwo'],
       scrollBar:            false,
       navigation:           true,
       verticalAlign:        false,
@@ -26,7 +24,6 @@ export default class FullPage extends Component {
         <SectionsContainer {...options}>
           <Section><WelcomePage /></Section>
           <Section><Heroes /></Section>
-          <Section><TaskPage /></Section>
         </SectionsContainer>
       </div>
     );

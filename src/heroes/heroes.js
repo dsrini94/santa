@@ -3,7 +3,11 @@ import React, { Component } from 'react';
 import './heroes.css'
 
 export default class Heroes extends Component {
-  render(){
+  constructor() {
+
+  }
+
+  render() {
 
     const imageUrl = [
       { image:'http://pngimg.com/uploads/ironman/ironman_PNG66.png',name:'IronMan'},
@@ -25,7 +29,7 @@ export default class Heroes extends Component {
         {
           imageUrl.map((item,index)=> ( <div >
                                           <img src={item.image} className="characters"/>
-                                          <h6>{item.name}</h6>
+                                          <img src= />
                                         </div>))
         }
       </div>
