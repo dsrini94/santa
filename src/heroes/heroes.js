@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Modal, Image, Header, Button } from 'semantic-ui-react';
+import {Link} from 'react-router-dom';
 
 import './heroes.css'
 
@@ -24,6 +25,8 @@ export default class Heroes extends Component {
     image.src = this.state.bulb.on;
     this.setState(() => {
       return {selectedHero: hero.alt, selectedHeroUrl: hero.src, modalOpen:true};
+    },() =>{
+      localStorage.setItem('heroUrl', hero.src);
     });
     console.log(this.state.selectedHero);
   }
@@ -215,7 +218,8 @@ export default class Heroes extends Component {
               icon='checkmark'
               labelPosition='right'
               content="Yep, let's go"
-              onClick={() => {}}
+              as ={Link}
+              to="/qanda"
             />
           </Modal.Actions>
         </Modal>
