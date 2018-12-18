@@ -13,19 +13,21 @@ import sampleQuestions from "./sampleQuestions.json";
 import {Link} from 'react-router-dom';
 
 import './questionAnswer.css';
-
+var timeInterval;
 export default class QuestionAnswer extends Component {
   constructor(props)
    {
      super(props);
      this.state={
        allQuestions:[],
-       totalScore:0
+       totalScore:0,
+       timer: 60
      }
      this.submitClick = this.submitClick.bind(this);
      this.modalClose = this.modalClose.bind(this);
    }
    componentDidMount(){
+    timeInterval = setInterval(() => this.timer(),1000);
      sampleQuestions.map((item, i) => {
        item["selectedAnswer"] = ['lightgrey','lightgrey','lightgrey','lightgrey'];
        item["ansToCompareWith"]='';
@@ -33,6 +35,20 @@ export default class QuestionAnswer extends Component {
      this.setState(() => {
        return {allQuestions: sampleQuestions};
      });
+   }
+   timer() {
+     let { timer } = this.state;
+     if (timer === 0) {
+      this.submitClick();
+      clearInterval(timeInterval);      
+     } else {
+       this.setState(() => {
+         return {timer: timer - 1};
+       });
+     }
+   }
+   componentWillUnmount() {
+     clearInterval(this.timer());
    }
    optionClick(questionId,value,item){
      console.log("selected",questionId,value,item);
@@ -127,6 +143,9 @@ export default class QuestionAnswer extends Component {
           <center>
             Quanta
           </center>
+          <span style={{marginTop:"-2%", float: 'right', color:"red"}} >
+            {this.state.timer}
+          </span>
         </Header>
     {this.state.allQuestions.map((item,i)=>{
       // console.log("item",item);
