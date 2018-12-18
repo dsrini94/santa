@@ -19,7 +19,7 @@
 }
 
 .characters {
-  height:200px;
+  height:180px;
   display: block;
   margin: 20px auto;
   animation: heroes 5s linear infinite;
@@ -50,4 +50,9 @@
 }
 .runBulb {
   cursor: pointer;
+}
+
+.bulb {
+  width: 40px;
+  height: 55px;
 }
