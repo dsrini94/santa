@@ -189,7 +189,7 @@ export default class Heroes extends Component {
 
     return(
       <div className="outerContainer">
-        <h1 className="runBulb" onClick={() => this.one(1)}>Select your character</h1>
+        <h1 className="runBulb" onClick={() => this.one(1)}>Click here to get your character</h1>
         <div className="heroesContainer">
           {
             imageUrl.map((item,i) => ( <div>
