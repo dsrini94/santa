@@ -1,11 +1,14 @@
 .outerContainer {
   height: 99.5vh;
   background: #125e84;
+  align-content: center;
+  align-self: center;
 }
 
 .heroesContainer {
   display: grid;
   grid-template-columns: auto auto auto auto auto;
+  align-content: center;
 }
 
 
@@ -20,6 +23,7 @@
   display: block;
   margin: 20px auto;
   animation: heroes 5s linear infinite;
+  align-content: center;
 }
 
 .heroesContainer h6{
@@ -39,4 +43,16 @@
   position: relative;
   font-family: 'Charm', cursive;
   font-size: 3em;
+}
+
+.outerContainer h1:hover {
+  color: #c90a0a;
+}
+.runBulb {
+  cursor: pointer;
+}
+
+.bulb {
+  width: 20px;
+  height: 36px;
 }
