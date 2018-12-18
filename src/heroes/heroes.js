@@ -187,6 +187,8 @@ export default class Heroes extends Component {
       { image:'https://vignette.wikia.nocookie.net/marvelcinematicuniverse/images/6/64/Doctor_Strange_Render.png/revision/latest?cb=20161130041146',name:'Dr. Strange'},
     ];
 
+    const greetings = ['Hey', 'Hi', 'Hello'];
+
     return(
       <div className="outerContainer">
         <h1 className="runBulb" onClick={() => this.one(1)}>Click here to get your character</h1>
@@ -204,9 +206,14 @@ export default class Heroes extends Component {
           <Modal.Content image>
             <Image wrapped size='medium' src={this.state.selectedHeroUrl} alt={this.state.selectedHero} style={{height:"400px"}} />
             <Modal.Description>
-              <Header>Default Profile Image</Header>
-              <p>Weve found the following gravatar image associated with your e-mail address.</p>
-              <p>Is it okay to use this photo?</p>
+              <Header as='h1'>
+                {greetings[Math.floor(Math.random() * greetings.length)]}, I am {this.state.selectedHero}!
+              </Header>
+              <div style={{fontSize: "16px"}}>
+                <p> I have got some interesting questions to ask. </p>
+                <p> It will cool to ask you all those questions and get to know the answers from you </p>
+                <p> Would you like to play? </p>
+              </div>
             </Modal.Description>
           </Modal.Content>
           <Modal.Actions>
@@ -217,7 +224,7 @@ export default class Heroes extends Component {
               positive
               icon='checkmark'
               labelPosition='right'
-              content="Yep, let's go"
+              content="Yep, let's play"
               as ={Link}
               to="/qanda"
             />

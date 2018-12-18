@@ -47,9 +47,6 @@ export default class QuestionAnswer extends Component {
        });
      }
    }
-   componentWillUnmount() {
-     clearInterval(this.timer());
-   }
    optionClick(questionId,value,item){
      console.log("selected",questionId,value,item);
      let temp =this.state.allQuestions;
@@ -273,7 +270,7 @@ export default class QuestionAnswer extends Component {
       </Modal.Content>
       <Modal.Actions>
         <Button color='green'  as={Link} to='/'>
-          Submit
+          Close
         </Button>
       </Modal.Actions>
     </Modal>
