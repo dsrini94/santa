@@ -10,7 +10,6 @@ import {
   Icon
 } from 'semantic-ui-react';
 import sampleQuestions from "./sampleQuestions.json";
-import {Link} from 'react-router-dom';
 
 import './questionAnswer.css';
 var timeInterval;
@@ -29,6 +28,14 @@ export default class QuestionAnswer extends Component {
    }
    componentDidMount(){
     timeInterval = setInterval(() => this.timer(),1000);
+    fetch("http://ec2-13-233-167-209.ap-south-1.compute.amazonaws.com:5005")
+      .then(res => res.json())
+      .then(data => {
+        this.setState(() => {
+          return { allQuestions: data };
+        });
+      })
+      .catch(err => console.error('err in getting ques - > ', err));
      sampleQuestions.map((item, i) => {
        item["selectedAnswer"] = ['lightgrey','lightgrey','lightgrey','lightgrey'];
        item["ansToCompareWith"]='';
@@ -49,7 +56,7 @@ export default class QuestionAnswer extends Component {
      }
    }
    finalSubmit() {
-     window.open("http://localhost:8080");
+     window.open("http://ec2-13-233-167-209.ap-south-1.compute.amazonaws.com:8080");
      window.close();
    }
    optionClick(questionId,value,item){
