@@ -9,7 +9,8 @@ import {
   Image,
   Icon
 } from 'semantic-ui-react';
-import sampleQuestions from "./sampleQuestions.json";
+// import sampleQuestions from "./sampleQuestions.json";
+import request from 'superagent';
 
 import './questionAnswer.css';
 var timeInterval;
@@ -28,23 +29,24 @@ export default class QuestionAnswer extends Component {
    }
    componentDidMount(){
     timeInterval = setInterval(() => this.timer(),1000);
-    fetch("http://ec2-13-233-167-209.ap-south-1.compute.amazonaws.com:5005/qb/quest")
-      .then(res => res.json())
-      .then(data => {
-        this.setState(() => {
-          return { allQuestions: data };
-        });
-        console.log('quest set - > ', this.state.allQuestions);
-        
-      })
-      .catch(err => console.error('err in getting ques - > ', err));
-     sampleQuestions.map((item, i) => {
-       item["selectedAnswer"] = ['lightgrey','lightgrey','lightgrey','lightgrey'];
-       item["ansToCompareWith"]='';
-     });
-     this.setState(() => {
-       return {allQuestions: sampleQuestions};
-     });
+    request.get("http://ec2-13-233-167-209.ap-south-1.compute.amazonaws.com:5005/qb/quest")
+	.end((err, res) => {
+		console.log("response",res);	
+		if(err) {
+ 	 		console.error('Error in getting quest data -> ', err);
+		} else {
+			let sampleQuestions = res.body;
+     			sampleQuestions.map((item, i) => {
+			       item["selectedAnswer"] = ['lightgrey','lightgrey','lightgrey','lightgrey'];
+			       item["ansToCompareWith"]='';
+		     });
+			console.log("samplequestions!!!!!!!!11",sampleQuestions);
+		     this.setState(() => {
+		       return {allQuestions: sampleQuestions};
+		     });
+		}
+	});
+    
    }
    timer() {
      let { timer } = this.state;
@@ -122,7 +124,7 @@ export default class QuestionAnswer extends Component {
      console.log("result",this.state.allQuestions);
      let score = 0;
      this.state.allQuestions.map((item,key)=>{
-       if(item.ans == item.ansToCompareWith){
+       if(item.ans == item[item.ansToCompareWith]){
          score++;
        }
      })
@@ -149,7 +151,7 @@ export default class QuestionAnswer extends Component {
     return(
       <div className="customStyle" style={{overflow:'hidden'}}>
         <SnowStorm />
-        <Header as='h2' block>
+        <Header as='h2' block style={{position:'fixed',width:'100%',zIndex:'1'}}>
           <Image size='large' src={localStorage.heroUrl} style={{float:'left'}}/>
           <center>
             Quanta
@@ -159,10 +161,10 @@ export default class QuestionAnswer extends Component {
           </span>
         </Header>
     {this.state.allQuestions.map((item,i)=>{
-      // console.log("item",item);
+       console.log("item",item);
       let customMargin = '';
       if(i == 0){
-        customMargin='3%';
+        customMargin='7%';
       }
       else{
         customMargin='0%';
