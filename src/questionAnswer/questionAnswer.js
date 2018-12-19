@@ -28,12 +28,14 @@ export default class QuestionAnswer extends Component {
    }
    componentDidMount(){
     timeInterval = setInterval(() => this.timer(),1000);
-    fetch("http://ec2-13-233-167-209.ap-south-1.compute.amazonaws.com:5005")
+    fetch("http://ec2-13-233-167-209.ap-south-1.compute.amazonaws.com:5005/qb/quest")
       .then(res => res.json())
       .then(data => {
         this.setState(() => {
           return { allQuestions: data };
         });
+        console.log('quest set - > ', this.state.allQuestions);
+        
       })
       .catch(err => console.error('err in getting ques - > ', err));
      sampleQuestions.map((item, i) => {
