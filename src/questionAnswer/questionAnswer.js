@@ -25,6 +25,7 @@ export default class QuestionAnswer extends Component {
      }
      this.submitClick = this.submitClick.bind(this);
      this.modalClose = this.modalClose.bind(this);
+     this.finalSubmit = this.finalSubmit.bind(this);
    }
    componentDidMount(){
     timeInterval = setInterval(() => this.timer(),1000);
@@ -46,6 +47,10 @@ export default class QuestionAnswer extends Component {
          return {timer: timer - 1};
        });
      }
+   }
+   finalSubmit() {
+     window.open("http://localhost:8080");
+     window.close();
    }
    optionClick(questionId,value,item){
      console.log("selected",questionId,value,item);
@@ -269,7 +274,7 @@ export default class QuestionAnswer extends Component {
         </Header>
       </Modal.Content>
       <Modal.Actions>
-        <Button color='green'  as={Link} to='/'>
+        <Button color='green' onClick={this.finalSubmit}>
           Close
         </Button>
       </Modal.Actions>

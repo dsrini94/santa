@@ -211,7 +211,7 @@ export default class Heroes extends Component {
               </Header>
               <div style={{fontSize: "16px"}}>
                 <p> I have got some interesting questions to ask. </p>
-                <p> It will cool to ask you all those questions and get to know the answers from you </p>
+                <p> It will be cool to ask you all those questions and get to know the answers from you. </p>
                 <p> Would you like to play? </p>
               </div>
             </Modal.Description>
